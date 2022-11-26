@@ -5,23 +5,25 @@ function userLogin() {
         url : `https://reqres.in/api/login`,
         method : `POST`,
         data : {
+            // email : "eve.holt@reqres.in",
+            // password : "cityslicka",
+
+            // OR  on log in page use eve.holt@reqres.in, password: cityslicka
             email : document.getElementById(`userlogIn`).value,
             password : document.getElementById(`userPassword`).value
         }
     }).then(loginSuccessful).catch(loginFailed);
 }
 
-function loginSuccessful() {
-    console.log(`success`);
-    Cookies.set(`sessionToken`, response.data.token);
-
-    // good to here.  use eve.holt@reqres.in cityslicka.  research move another page
-    document(`<a href="home.html"></a>`);
+function loginSuccessful(response) {
+    let data = response.token
+    Cookies.set(`sessionToken`, data);
+    location.href = (`home.html`);
 }
 
 function loginFailed(error) {
-    console.log(error.response.data.error);
-    alert(error.response.data.error);
+    console.log(`Log in Failed`);
+    alert(`log in failed`);
     
 }
 
