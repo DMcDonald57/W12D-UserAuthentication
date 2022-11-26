@@ -7,9 +7,7 @@ function colors(response) {
     for (let post of data){
         document.body.insertAdjacentHTML(`beforeend`, `<h3>Name:${post.name}</h3>`);
         document.body.insertAdjacentHTML(`beforeend`, `<h3>Year:${post.year}</h3>`);
-        
-
-        // document.body.insertAdjacentHTML(`beforeend`, `${post.color}`);
+        document.body.insertAdjacentHTML(`beforeend`, `<input type = "color" value=${post.color}>`)
     }
 }
 
