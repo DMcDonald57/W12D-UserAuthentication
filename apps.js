@@ -2,19 +2,21 @@
 
 function userLogin() {
     axios.request({
-        url : `https://reqres.in/`,
+        url : `https://reqres.in/api/login`,
         method : `POST`,
         data : {
-            email : document.getElementById(`userlogin`),
-            password : document.getElementById(`userPassword`),
+            email : document.getElementById(`userlogIn`).value,
+            password : document.getElementById(`userPassword`).value
         }
     }).then(loginSuccessful).catch(loginFailed);
 }
 
 function loginSuccessful() {
     console.log(`success`);
-    Cookies.set(`sessionToken`, respons.data.token);
-    document.body(<a href="home.html"></a>);
+    Cookies.set(`sessionToken`, response.data.token);
+
+    // good to here.  use eve.holt@reqres.in cityslicka.  research move another page
+    document(`<a href="home.html"></a>`);
 }
 
 function loginFailed(error) {
@@ -22,3 +24,5 @@ function loginFailed(error) {
     alert(error.response.data.error);
     
 }
+
+document.getElementById(`submitLogin`).addEventListener(`click`, userLogin);
